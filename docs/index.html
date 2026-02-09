@@ -3,15 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="./src/img/tooth.png" type="image/x-icon">
   <title>Feliz día</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Google+Sans:opsz@17..18&display=swap');
     :root {
       --bg: #fdf8f1;
       --ink: #1b1b1b;
       --accent: #A7AAE1;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box;
+      font-family: "Google Sans", sans-serif; }
 
     body {
       margin: 0;
@@ -150,6 +153,10 @@
       position: relative;
       z-index: 1;
     }
+
+    .doc-img img {
+      width: 128px;
+    }
   </style>
 </head>
 <body>
@@ -160,6 +167,9 @@
     </div>
 
     <h1><span class="spark">Feliz día</span></h1>
+    <div class="doc-img">
+      <img src="./src/img/dentist.png"/>
+    </div>
     <p class="sub">Gracias por cuidar tantas sonrisas.</p>
   </main>
   <script>
@@ -238,6 +248,7 @@
                              @@@@@@@@                          @@@@@@@@                             `;
 
     const target = document.getElementById("tooth");
+
     const lines = art.split("\n");
     let i = 0;
 
