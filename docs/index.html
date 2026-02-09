@@ -99,7 +99,7 @@
       height: 12px;
       border-radius: 2px;
       opacity: 0.9;
-      animation: fall linear forwards;
+      animation: fall linear infinite;
     }
 
     @keyframes float {
@@ -174,8 +174,8 @@
   </main>
   <script>
     const confetti = document.querySelector(".confetti");
-    const colors = ["#f2c94c", "#f2994a", "#56ccf2", "#bb6bd9", "#6fcf97"];
-    const pieces = 28;
+    const colors = ["#FF9B45","#FF6B6B", "#FFD93D", "#6BCB77", "#4D96FF", "#FFAAB8", "#A7AAE1", "#A3DC9A", "#594100"];
+    const pieces = 56;
 
     for (let c = 0; c < pieces; c += 1) {
       const piece = document.createElement("span");
