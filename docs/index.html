@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feliz día</title>
+  <style>
+    :root {
+      --bg: #fdf8f1;
+      --ink: #1b1b1b;
+      --accent: #A7AAE1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 20% 20%, #fff6dd 0%, var(--bg) 45%, #f5efe6 100%);
+      color: var(--ink);
+      font-family: "Georgia", "Times New Roman", serif;
+    }
+
+    .card {
+      text-align: center;
+      padding: 32px 24px 28px;
+      border: 2px solid var(--ink);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 6px 8px 0 rgba(0, 0, 0, 0.12);
+      max-width: 980px;
+      width: min(95vw, 980px);
+    }
+
+    .tooth-wrap {
+      display: grid;
+      place-items: center;
+      margin: 0 0 20px 0;
+      animation: float 3.8s ease-in-out infinite;
+      transform-origin: 50% 100%;
+    }
+
+    .tooth {
+      font-family: "Courier New", Courier, monospace;
+      font-size: clamp(6px, 1.25vw, 12px);
+      line-height: 1;
+      letter-spacing: 0.4px;
+      margin: 0;
+      white-space: pre;
+      color: transparent;
+      background-image: linear-gradient(120deg, var(--ink) 0%, var(--ink) 42%, var(--accent) 50%, var(--ink) 58%, var(--ink) 100%);
+      background-size: 220% 100%;
+      background-position: -120% 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      min-height: 30em;
+      text-align: left;
+      overflow-x: auto;
+      animation: shine 4.6s linear infinite;
+    }
+
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: clamp(26px, 4vw, 40px);
+    }
+
+    .sub {
+      margin: 0;
+      font-size: clamp(14px, 2.2vw, 18px);
+    }
+
+    .spark {
+      display: inline-block;
+      background: var(--accent);
+      padding: 2px 10px;
+      border-radius: 999px;
+      margin-left: 6px;
+      font-size: 0.9em;
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    .confetti {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .confetti span {
+      position: absolute;
+      top: -10vh;
+      width: 8px;
+      height: 12px;
+      border-radius: 2px;
+      opacity: 0.9;
+      animation: fall linear forwards;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-6px) rotate(-1.2deg);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: -120% 0;
+      }
+      100% {
+        background-position: 120% 0;
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.04);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(115vh) rotate(220deg);
+        opacity: 0;
+      }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="confetti" aria-hidden="true"></div>
+  <main class="card">
+    <div class="tooth-wrap">
+      <pre id="tooth" class="tooth" aria-label="Diente hecho con asteriscos"></pre>
+    </div>
+
+    <h1><span class="spark">Feliz día</span></h1>
+    <p class="sub">Gracias por cuidar tantas sonrisas.</p>
+  </main>
+  <script>
+    const confetti = document.querySelector(".confetti");
+    const colors = ["#f2c94c", "#f2994a", "#56ccf2", "#bb6bd9", "#6fcf97"];
+    const pieces = 28;
+
+    for (let c = 0; c < pieces; c += 1) {
+      const piece = document.createElement("span");
+      const left = Math.random() * 100;
+      const delay = Math.random() * 0.8;
+      const duration = 4 + Math.random() * 2.5;
+      const drift = (Math.random() * 30) - 15;
+      piece.style.left = `${left}vw`;
+      piece.style.background = colors[c % colors.length];
+      piece.style.animationDuration = `${duration}s`;
+      piece.style.animationDelay = `${delay}s`;
+      piece.style.transform = `translateX(${drift}vw)`;
+      confetti.appendChild(piece);
+    }
+
+    const art = `       @@@                                                                                          
+      @@@@                                                                                          
+     @@@@@@@                                                                                        
+  @@@@@@ @@@@@                                                                                      
+@@@@@@    @@@@@@@                                                                                   
+ @@@@@@@ @@@@@@                @@@@@@                           @@@@@                               
+     @@@@@@@            @@@@@@@@@@@@@@@@@@@              @@@@@@@@@@@@@@@@@@@                        
+      @@@@@          @@@@@@@@@@     @@@@@@@@@@@@@@@@@@@@@@@@@@@@     @@@@@@@@@@                     
+       @@@        @@@@@@@                  @@@@@@@@@@@@@@                  @@@@@@@                  
+                 @@@@@                                                        @@@@@                 
+               @@@@@                                                            @@@@@               
+              @@@@       @@@    @@@                                               @@@@              
+             @@@@      @@@@@@   @@@                                                @@@@             
+            @@@@     @@@@@                                                          @@@@            
+           @@@@     @@@@                                                             @@@@           
+           @@@     @@@@                                                               @@@           
+          @@@@     @@@                                                                @@@@          
+          @@@     @@@@                                                                 @@@          
+          @@@                                                                          @@@          
+          @@@                                                                          @@@          
+          @@@                                                                          @@@          
+          @@@@                                                                        @@@@          
+          @@@@                                                                        @@@@          
+           @@@                                                                        @@@           
+           @@@@                                                                      @@@@           
+            @@@                                                                      @@@            
+            @@@@                                                                    @@@@            
+             @@@                                                                    @@@@            
+             @@@@                                                                  @@@@             
+              @@@@                                                                @@@@              
+               @@@@                                                              @@@@               
+               @@@@@                           @@@@@@                           @@@@@               
+                @@@@@                       @@@@@@@@@@@@                       @@@@@                
+                 @@@@                      @@@@@    @@@@@                      @@@@                 
+                   @@@                     @@@        @@@                     @@@                   
+                   @@@                    @@@@        @@@@                    @@@                   
+                   @@@@                   @@@@        @@@@                   @@@@                   
+                    @@@                   @@@          @@@                   @@@                    
+                    @@@@                 @@@@          @@@@                 @@@@           @        
+                     @@@                 @@@@          @@@@                 @@@           @@@@      
+                     @@@@                @@@            @@@                @@@@          @@@@@      
+                     @@@@               @@@@            @@@@               @@@@        @@@@@@@@@    
+                      @@@               @@@@            @@@@               @@@      @@@@@@@  @@@@@@@
+                      @@@@              @@@              @@@              @@@@     @@@@@@@   @@@@@@@
+                       @@@             @@@@              @@@@             @@@          @@@@@@@@@    
+                       @@@@            @@@@              @@@@            @@@@            @@@@@@     
+                       @@@@            @@@                @@@            @@@@             @@@@      
+                        @@@           @@@@                @@@@           @@@               @@       
+                        @@@@          @@@@                @@@@          @@@@                        
+                         @@@          @@@@                 @@@          @@@                         
+                         @@@@         @@@                  @@@         @@@@                         
+                         @@@@        @@@@                  @@@@        @@@@                         
+                          @@@@      @@@@                    @@@@      @@@@                          
+                           @@@@@@@@@@@@                      @@@@@@@@@@@@                           
+                             @@@@@@@@                          @@@@@@@@                             `;
+
+    const target = document.getElementById("tooth");
+    const lines = art.split("\n");
+    let i = 0;
+
+    const timer = setInterval(() => {
+      target.textContent = lines.slice(0, i + 1).join("\n");
+      if (i >= lines.length - 1) {
+        clearInterval(timer);
+        return;
+      }
+      i += 1;
+    }, 80);
+  </script>
+</body>
+</html>
